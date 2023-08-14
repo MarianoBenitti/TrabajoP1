@@ -50,7 +50,6 @@ void MainWindow::on_startstop_clicked()
     }
 
 
-
 }
 
 
@@ -69,7 +68,10 @@ void MainWindow::on_SetTemp_clicked()
 {
     QString str;
     str=ui->lineEdit->text();
-    cont=str.toInt();
+    if(str.toInt()>0){
+        cont=str.toInt();
+    }
+
     ui->lcdNumber->display(QString("%1").arg(cont,5,10,QChar('0')));
 }
 

@@ -66,12 +66,18 @@ void MainWindow::on_reset_clicked()
 
 void MainWindow::on_SetTemp_clicked()
 {
+    cont=0;
+    bool ok=0;
     QString str;
     str=ui->lineEdit->text();
-    if(str.toInt()>0){
-        cont=str.toInt();
+        cont=str.toInt(&ok,10);
+    if(cont>0 && ok){
+        ui->lcdNumber->display(QString("%1").arg(cont,5,10,QChar('0')));
+
+    }else{
+        cont=0;
+        ui->lcdNumber->display("Error");
     }
 
-    ui->lcdNumber->display(QString("%1").arg(cont,5,10,QChar('0')));
 }
 
